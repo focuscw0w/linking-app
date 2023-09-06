@@ -5,4 +5,4 @@ import { createPinia } from 'pinia'
 
 const pinia = createPinia();
 
-createApp(App).mount('#app').use(pinia);
+createApp(App).mount('#app');
