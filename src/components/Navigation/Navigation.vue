@@ -2,18 +2,18 @@
   <div class="flex justify-between items-center bg-white rounded-xl p-3">
     <a><img class="w-9/12" src="../../assets/images/logo-devlinks-large.svg" alt="devlinks"></a>
     <div class="flex gap-8">
-      <p @click="activeLink = 'Links'" class="flex gap-2 py-2 px-4 cursor-pointer"
-         :class="[activeLink === 'Links' ? 'text-violet-700 bg-violet-200 rounded-md font-bold' : '']">
+      <p @click="activeLink = 'Links'" class="text-sm flex gap-2 py-2 px-4 cursor-pointer"
+         :class="[activeLink === 'Links' ? 'font-emphasized bg-violet-200 rounded-md' : '']">
         <img src="../../assets/icons/icon-link.svg" alt="Link icon">
         Links
       </p>
-      <p @click="activeLink = 'Profile Details'" class="whitespace-nowrap flex gap-2 py-2 px-4 cursor-pointer"
-         :class="[activeLink === 'Profile Details' ? 'text-violet-700 bg-violet-200 rounded-md font-bold' : '']">
+      <p @click="activeLink = 'Profile Details'" class="text-sm whitespace-nowrap flex gap-2 py-2 px-4 cursor-pointer"
+         :class="[activeLink === 'Profile Details' ? 'font-emphasized bg-violet-200 rounded-md' : '']">
         <img src="../../assets/icons/icon-profile-details-header.svg" alt="My profile icon">
         Profile Details
       </p>
     </div>
-    <button>Preview</button>
+    <button class="font-emphasized p-3 border border-violet-800 rounded-md px-6 py-2">Preview</button>
   </div>
 </template>
 

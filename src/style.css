@@ -9,3 +9,7 @@
 }
 
 /* custom styles */
+
+.font-emphasized {
+  @apply text-sm text-violet-700 font-bold;
+}
