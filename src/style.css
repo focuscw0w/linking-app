@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +10,16 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Instrument Sans', sans-serif;
+}
+
 /* custom styles */
 
 .font-emphasized {
   @apply text-sm text-violet-700 font-bold;
+}
+
+.active-link-default {
+  @apply text-sm flex items-center gap-2 py-2 px-4 cursor-pointer;
 }
