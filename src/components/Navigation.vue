@@ -2,13 +2,13 @@
   <div class="flex justify-between items-center bg-white rounded-xl p-3 mb-5">
     <a><img class="w-9/12" src="../assets/images/logo-devlinks-large.svg" alt="devlinks"></a>
     <div class="flex gap-8">
-      <p @click="activeLink = 'Links'" class="active-link-default"
-         :class="[activeLink === 'Links' ? 'font-emphasized bg-violet-200 rounded-md' : '']">
+      <p @click="toggleActiveLink('Links')" class="active-link-default"
+         :class="[currentComponent === 'Links' ? 'font-emphasized bg-violet-200 rounded-md' : '']">
         <img src="../assets/icons/icon-link.svg" alt="Link icon">
         Links
       </p>
-      <p @click="activeLink = 'Profile Details'" class="active-link-default whitespace-nowrap"
-         :class="[activeLink === 'Profile Details' ? 'font-emphasized bg-violet-200 rounded-md' : '']">
+      <p @click="toggleActiveLink('Details')" class="active-link-default whitespace-nowrap"
+         :class="[currentComponent === 'Details' ? 'font-emphasized bg-violet-200 rounded-md' : '']">
         <img src="../assets/icons/icon-profile-details-header.svg" alt="My profile icon">
         Profile Details
       </p>
@@ -19,5 +19,13 @@
 
 <script setup>
 import {ref} from "vue";
-let activeLink = ref('Links');
+import {useToggleDisplayStore} from "../store/toggleDisplay.js";
+
+let currentComponent = ref('Links');
+const displayStore = useToggleDisplayStore();
+const toggleActiveLink = (componentName) => {
+  currentComponent.value = componentName;
+  displayStore.toggleDisplay(componentName);
+};
+
 </script>

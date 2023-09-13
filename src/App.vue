@@ -13,6 +13,6 @@
 <script setup>
 import Navigation from "./components/Navigation.vue";
 import Preview from "./components/Preview.vue";
-import Customizer from "./components/NavigationRoutingDIsplay.vue";
+import Customizer from "./components/NavigationDisplay.vue";
 
 </script>
