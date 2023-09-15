@@ -23,3 +23,15 @@ body {
 .active-link-default {
   @apply text-sm flex items-center gap-2 py-2 px-4 cursor-pointer;
 }
+
+.page-title {
+  @apply text-3xl text-black font-semibold;
+}
+
+.page-description {
+  @apply text-sm text-gray-500;
+}
+
+.button-bordered {
+  @apply font-emphasized p-3 border border-violet-600 hover:bg-violet-600 hover:text-white ease-in-out duration-150 rounded-md;
+}

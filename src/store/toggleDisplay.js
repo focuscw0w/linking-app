@@ -7,11 +7,21 @@ export const useToggleDisplayStore = defineStore('toggleDisplay', () => {
     // STORE
     const components = shallowRef({Links, Details});
     const currentComponent = ref('Links');
+    const navigationItems = [
+        {
+            id: 0,
+            name: 'Links',
+        },
+        {
+            id: 1,
+            name: 'Details',
+        }
+    ];
 
     // ACTION
     const toggleDisplay = (componentName) => {
         currentComponent.value = componentName;
     };
 
-    return {currentComponent, components, toggleDisplay}
+    return {currentComponent, components, toggleDisplay, navigationItems}
 })
