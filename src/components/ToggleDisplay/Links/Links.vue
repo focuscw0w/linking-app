@@ -7,7 +7,8 @@
         <p class="page-description">Add/edit/remove links below and then share all your profiles with the world!</p>
         <button class="button-bordered mt-8 w-full">+ Add new link</button>
         <div class="flex flex-col gap-1 mt-3">
-          <Link v-for="Link in userLinks" :key="Link.id" :linkData="Link"/>
+          <Link v-for="Link in userLinksStore.userLinks" :key="Link.id" :order="Link.order"
+                :id="Link.id"/>
         </div>
       </div>
       <Footer class="self-end"/>
@@ -18,21 +19,8 @@
 <script setup>
 import Preview from "../Preview.vue";
 import Footer from "../Footer.vue";
-import {ref} from "vue";
 import Link from "../Links/Link.vue";
+import {useUserLinksStore} from "../../../store/userLinks.js";
 
-const userLinks = ref([
-  {
-    id: 0,
-    order: 1,
-    platform: "GitHub",
-    link: "https://www.github.com"
-  },
-  {
-    id: 1,
-    order: 2,
-    platform: "YouTube",
-    link: "https://www.youtube.com"
-  },
-]);
+const userLinksStore = useUserLinksStore();
 </script>

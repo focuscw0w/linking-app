@@ -4,7 +4,7 @@
     <div class="flex gap-8">
       <LinksItem v-for="item in displayStore.navigationItems" :key="item.id"
                  @click="displayStore.toggleDisplay(item.name)"
-                 :linkName="item.name"
+                 :name="item.name"
       />
     </div>
     <button
@@ -16,7 +16,7 @@
 
 <script setup>
 import {useToggleDisplayStore} from "../../store/toggleDisplay.js";
-import LinksItem from "./LinksItem.vue";
+import LinksItem from "./NavigationItem.vue";
 
 const displayStore = useToggleDisplayStore();
 </script>
