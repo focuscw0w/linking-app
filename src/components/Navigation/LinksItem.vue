@@ -9,6 +9,6 @@
 <script setup>
 import {useToggleDisplayStore} from "../../store/toggleDisplay.js";
 
-const props = defineProps(['linkName'])
+const props = defineProps(["linkName"]);
 const displayStore = useToggleDisplayStore();
 </script>

@@ -3,7 +3,3 @@
       <img class="w-60" src="../../assets/images/illustration-phone-mockup.svg" alt="Links preview">
   </div>
 </template>
-
-<script setup>
-
-</script>
