@@ -1,5 +1,5 @@
-import {defineStore} from 'pinia'
-import {ref, shallowRef} from "vue";
+import {defineStore} from 'pinia';
+import {ref} from "vue";
 
 export const useUserLinksStore = defineStore('userLinkStore', () => {
     // STORE
@@ -23,5 +23,9 @@ export const useUserLinksStore = defineStore('userLinkStore', () => {
         userLinks.value = userLinks.value.filter(userLink => userLink.id !== id);
     }
 
-    return {userLinks, removeUserLink}
+    const selectMenuItem = (item, id) => {
+        userLinks.value[id].platform = item.text;
+    }
+
+    return {userLinks, removeUserLink, selectMenuItem}
 })

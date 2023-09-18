@@ -18,7 +18,7 @@ export const useToggleDisplayStore = defineStore('toggleDisplay', () => {
         }
     ];
 
-    // ACTION
+    // ACTIONS
     const toggleDisplay = (componentName) => {
         currentComponent.value = componentName;
     };
