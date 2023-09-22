@@ -1,13 +1,21 @@
 <template>
-  <div class="py-3 px-4 mb-2 bg-gray-100">
+  <div class="py-4 px-4 mb-2 bg-gray-100">
     <div class="flex justify-between items-center">
       <div class="flex gap-2">
         <img src="@/assets/icons/icon-drag-and-drop.svg" alt="drag and drop">
         <p class="text-sm">Link #{{ props.order }}</p>
       </div>
-      <p class="page-description cursor-pointer hover:text-gray-400" @click="userLinksStore.removeUserLink(props.id)">Remove</p>
+      <p class="page-description cursor-pointer hover:text-gray-400" @click="userLinksStore.removeUserLink(props.id)">
+        Remove</p>
     </div>
-    <DropDown :placeholder="props.placeholder" :id="props.id" />
+    <div class="flex flex-col gap-1">
+      <DropDown :placeholder="props.placeholder" :id="props.id"/>
+      <div>
+        <label class="text-xs">Link</label>
+        <input
+            class="w-full rounded-md bg-white px-3 py-2 text-sm font-semi-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+      </div>
+    </div>
   </div>
 </template>
 

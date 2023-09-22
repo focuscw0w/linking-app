@@ -16,8 +16,9 @@
           class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
         <div class="py-1">
           <MenuItem v-for="(item, index) in menuItems" :key="index" v-slot="{ active }">
-            <a href="#" @click="userLinksStore.selectMenuItem(item, props.id)"
+            <a class="flex gap-2 items-center" href="#" @click="userLinksStore.selectMenuItem(item, props.id)"
                :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">
+              <img :src="getIconSrc(item.text)" alt="icon of link">
               {{ item.text }}
             </a>
           </MenuItem>
@@ -32,12 +33,36 @@ import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import {useUserLinksStore} from "../../../store/userLinks.js";
 
+import githubIcon from "../../../assets/icons/icon-github.svg";
+import gitlabIcon from "../../../assets/icons/icon-gitlab.svg";
+import linkedinIcon from "../../../assets/icons/icon-linkedin.svg";
+import twitchIcon from "../../../assets/icons/icon-twitch.svg";
+import twitterIcon from "../../../assets/icons/icon-twitter.svg";
+import youtubeIcon from "../../../assets/icons/icon-youtube.svg";
+
 const props = defineProps(["placeholder", "id"]);
 const userLinksStore = useUserLinksStore();
 
 const menuItems = [
   {text: "GitHub"},
+  {text: "Gitlab"},
   {text: "Linkedin"},
-  {text: "Youtube"},
+  {text: "YouTube"},
+  {text: "Twitch"},
+  {text: "Twitter"},
 ];
+
+const getIconSrc = (itemName) => {
+  const icons = [
+    {name: "GitHub", icon: githubIcon,},
+    {name: "Gitlab", icon: gitlabIcon,},
+    {name: "Linkedin", icon: linkedinIcon,},
+    {name: "Twitch", icon: twitchIcon,},
+    {name: "Twitter", icon: twitterIcon},
+    {name: "YouTube", icon: youtubeIcon},
+  ];
+
+  return icons.find(obj => obj.name === itemName).icon;
+}
+
 </script>
