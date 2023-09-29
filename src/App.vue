@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-gray-100 w-screen h-screen">
-    <div class="container mx-auto pt-4">
+  <div class="bg-gray-100 w-screen">
+    <div class="container mx-auto py-4">
       <Navigation/>
       <keep-alive>
         <component :is="displayStore.components[displayStore.currentComponent]">

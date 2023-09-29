@@ -14,6 +14,10 @@ body {
   font-family: 'Instrument Sans', sans-serif;
 }
 
+.link-input {
+  background: url("assets/icons/icon-link.svg") no-repeat scroll 10px 10px;
+}
+
 /* custom styles */
 
 .font-emphasized {
