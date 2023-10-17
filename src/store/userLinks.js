@@ -8,13 +8,15 @@ export const useUserLinksStore = defineStore('userLinkStore', () => {
             id: 0,
             order: 1,
             platform: "GitHub",
-            link: "https://www.github.com"
+            placeholder: ref("https://www.github.com"),
+            link: ref("")
         },
         {
             id: 1,
             order: 2,
             platform: "YouTube",
-            link: "https://www.youtube.com"
+            placeholder: ref("https://www.youtube.com"),
+            link: ref("")
         },
     ]);
 
@@ -27,5 +29,11 @@ export const useUserLinksStore = defineStore('userLinkStore', () => {
         userLinks.value[id].platform = item.text;
     }
 
-    return {userLinks, removeUserLink, selectMenuItem}
+    const saveNewLink = () => {
+        userLinks.value.forEach(userLink => {
+            userLink.placeholder = userLink.link;
+        })
+    }
+
+    return {userLinks, removeUserLink, selectMenuItem, saveNewLink}
 })

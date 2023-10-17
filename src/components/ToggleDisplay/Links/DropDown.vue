@@ -4,7 +4,10 @@
       <label class="text-xs">Platform</label>
       <MenuButton
           class="flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 mt-1 text-sm font-semi-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-        {{ props.placeholder }}
+        <div class="flex gap-2">
+          <img :src="getIconSrc(props.placeholder)" alt="platform icon">
+          {{ props.placeholder }}
+        </div>
         <ChevronDownIcon class="-mr-1 h-5 w-5 text-violet-600" aria-hidden="true"/>
       </MenuButton>
     </div>

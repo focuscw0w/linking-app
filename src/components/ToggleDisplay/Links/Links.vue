@@ -7,8 +7,7 @@
         <p class="page-description">Add/edit/remove links below and then share all your profiles with the world!</p>
         <button class="button-bordered mt-8 mb-3 w-full">+ Add new link</button>
         <div class="flex flex-col gap-1 mt-3">
-          <Link v-for="Link in userLinksStore.userLinks" :key="Link.id" :order="Link.order" :platform="Link.platform"
-                :placeholder="Link.link"
+          <Link v-for="Link in userLinksStore.userLinks" :key="Link.id"
                 :id="Link.id"/>
         </div>
       </div>
