@@ -1,5 +1,6 @@
 import {defineStore} from 'pinia';
 import {ref} from "vue";
+import { useNotificationStore } from './notification';
 
 export const useUserLinksStore = defineStore('userLinkStore', () => {
     // STORE
@@ -29,10 +30,12 @@ export const useUserLinksStore = defineStore('userLinkStore', () => {
         userLinks.value[id].platform = item.text;
     }
 
+    const notificationStore = useNotificationStore();
     const saveNewLink = () => {
         userLinks.value.forEach(userLink => {
-            userLink.placeholder = userLink.link;
+          // userLink.placeholder = userLink.placeholder
         })
+        notificationStore.turnOnNotification();
     }
 
     return {userLinks, removeUserLink, selectMenuItem, saveNewLink}

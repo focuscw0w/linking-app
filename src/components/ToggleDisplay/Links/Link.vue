@@ -15,7 +15,7 @@
         <input
             class="link-input w-full rounded-md bg-white px-8 py-2 text-sm font-semi-bold placeholder-gray-900 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             :placeholder="linkItem.placeholder"
-            v-model="linkItem.link"
+            v-model="linkItem.placeholder"
         >
       </div>
     </div>
@@ -29,9 +29,9 @@ import {computed} from "vue";
 
 const props = defineProps(["id"]);
 const userLinksStore = useUserLinksStore();
-
 const linkItem = computed(() => {
   return userLinksStore.userLinks.find(link => link.id === props.id);
 })
+
 
 </script>
