@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import {ref, shallowRef} from "vue";
 import Links from "../components/ToggleDisplay/Links/Links.vue";
-import Details from "../components/ToggleDisplay/Details.vue";
+import Details from "../components/ToggleDisplay/Details/Details.vue";
 
 export const useToggleDisplayStore = defineStore('toggleDisplayStore', () => {
     // STORE

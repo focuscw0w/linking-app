@@ -40,6 +40,12 @@ body {
   @apply font-emphasized p-3 border border-violet-600 hover:bg-violet-600 hover:text-white ease-in-out duration-150 rounded-md;
 }
 
+.center-background-text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* animations */
 
 .slide-fade-enter-active {

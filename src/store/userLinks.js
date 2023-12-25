@@ -27,13 +27,14 @@ export const useUserLinksStore = defineStore('userLinkStore', () => {
     }
 
     const selectMenuItem = (item, id) => {
-        userLinks.value[id].platform = item.text;
+        userLinks.value[id].platform = item.platform;
+        userLinks.value[id].placeholder = item.placeholder;
     }
 
     const notificationStore = useNotificationStore();
     const saveNewLink = () => {
         userLinks.value.forEach(userLink => {
-          // userLink.placeholder = userLink.placeholder
+           userLink.placeholder = userLink.placeholder
         })
         notificationStore.turnOnNotification();
     }
