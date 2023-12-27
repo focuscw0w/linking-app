@@ -46,6 +46,10 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.upload-img {
+  filter: brightness(0) invert(1);
+}
+
 /* animations */
 
 .slide-fade-enter-active {
