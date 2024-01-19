@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { defineStore } from "pinia";
 import { ref } from "vue";
+=======
+import {defineStore} from 'pinia';
+import {ref} from "vue";
+import { useNotificationStore } from './notification';
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6
 
 export const useUserLinksStore = defineStore("userLinkStore", () => {
   // STORE
@@ -25,6 +31,7 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
     userLinks.value = userLinks.value.filter((userLink) => userLink.id !== id);
   };
 
+<<<<<<< HEAD
   const selectMenuItem = (item, id) => {
     userLinks.value[id].platform = item.text;
   };
@@ -34,6 +41,20 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
       userLink.placeholder = userLink.link;
     });
   };
+=======
+    const selectMenuItem = (item, id) => {
+        userLinks.value[id].platform = item.platform;
+        userLinks.value[id].placeholder = item.placeholder;
+    }
+
+    const notificationStore = useNotificationStore();
+    const saveNewLink = () => {
+        userLinks.value.forEach(userLink => {
+           userLink.placeholder = userLink.placeholder
+        })
+        notificationStore.turnOnNotification();
+    }
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6
 
   return { userLinks, removeUserLink, selectMenuItem, saveNewLink };
 });

@@ -19,7 +19,11 @@
         <input
           class="link-input w-full rounded-md bg-white px-8 py-2 text-sm font-semi-bold placeholder-gray-900 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           :placeholder="linkItem.placeholder"
+<<<<<<< HEAD
           v-model="linkItem.link"
+=======
+          v-model="linkItem.placeholder"
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6
         />
       </div>
     </div>
@@ -29,6 +33,7 @@
 <script setup>
 import { useUserLinksStore } from "../../../store/userLinks.js";
 import DropDown from "./DropDown.vue";
+<<<<<<< HEAD
 import { watchEffect, ref } from "vue";
 
 const props = defineProps(["id"]);
@@ -38,5 +43,13 @@ const linkItem = ref(null);
 
 watchEffect(() => {
   linkItem.value = userLinksStore.userLinks.find((link) => link.id === props.id);
+=======
+import { computed } from "vue";
+
+const props = defineProps(["id"]);
+const userLinksStore = useUserLinksStore();
+const linkItem = computed(() => {
+  return userLinksStore.userLinks.find((link) => link.id === props.id);
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6
 });
 </script>

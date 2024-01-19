@@ -39,3 +39,32 @@ body {
 .button-bordered {
   @apply font-emphasized p-3 border border-violet-600 hover:bg-violet-600 hover:text-white ease-in-out duration-150 rounded-md;
 }
+<<<<<<< HEAD
+=======
+
+.center-background-text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upload-img {
+  filter: brightness(0) invert(1);
+}
+
+/* animations */
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6

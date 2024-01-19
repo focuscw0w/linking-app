@@ -42,8 +42,13 @@
                 'block px-4 py-2 text-sm',
               ]"
             >
+<<<<<<< HEAD
               <img :src="getIconSrc(item.text)" alt="icon of link" />
               {{ item.text }}
+=======
+              <img :src="getIconSrc(item.platform)" alt="icon of link" />
+              {{ item.platform }}
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6
             </a>
           </MenuItem>
         </div>
@@ -56,6 +61,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid/index.js";
 import { useUserLinksStore } from "../../../store/userLinks.js";
+<<<<<<< HEAD
 
 import githubIcon from "../../../assets/icons/icon-github.svg";
 import gitlabIcon from "../../../assets/icons/icon-gitlab.svg";
@@ -88,4 +94,11 @@ const getIconSrc = (itemName) => {
 
   return icons.find((obj) => obj.name === itemName).icon;
 };
+=======
+import { useDropdownStore } from "../../../store/dropdown.js";
+const userLinksStore = useUserLinksStore();
+const dropdownStore = useDropdownStore();
+const props = defineProps(["placeholder", "id"]);
+const { menuItems, getIconSrc } = dropdownStore;
+>>>>>>> abce69e20f918087013a4ddf370dda43ad5afda6
 </script>
