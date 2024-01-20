@@ -47,8 +47,51 @@
 import { ref } from "vue";
 const activeHover = ref(false);
 
+const checkImageResolution = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const img = new Image();
+
+      img.onload = function () {
+        const resolution = {
+          width: img.width,
+          height: img.height,
+        };
+        resolve(resolution);
+      };
+
+      img.onerror = function (error) {
+        reject(error);
+      };
+
+      img.src = event.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+};
+
+const throwWarning = () => {
+  console.log("bad");
+};
+
+let imageSrc = null;
+const saveAvatar = (file) => {
+  imageSrc = URL.createObjectURL(file);
+};
+
 const handleFileChange = (event) => {
   const file = event.target.files[0];
-  console.log(file);
+  const resolutionLimit = 1024;
+
+  if (file) {
+    checkImageResolution(file).then((resolution) => {
+      resolution.width && resolution.height <= resolutionLimit
+        ? saveAvatar(file)
+        : throwWarning();
+    });
+  }
 };
 </script>
