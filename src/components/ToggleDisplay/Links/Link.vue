@@ -13,7 +13,7 @@
       </p>
     </div>
     <div class="flex flex-col gap-1">
-      <DropDown :placeholder="linkItem.platform" :id="props.id" />
+      <DropDown :platform="linkItem.platform" :id="props.id" />
       <div>
         <label class="text-xs">Link</label>
         <input
@@ -28,8 +28,8 @@
 
 <script setup>
 import { useUserLinksStore } from "../../../store/userLinks.js";
-import DropDown from "./DropDown.vue";
 import { computed } from "vue";
+import DropDown from "./DropDown.vue";
 
 const props = defineProps(["id"]);
 const userLinksStore = useUserLinksStore();

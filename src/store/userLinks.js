@@ -1,6 +1,6 @@
-import {defineStore} from 'pinia';
-import {ref} from "vue";
-import { useNotificationStore } from './notification';
+import { defineStore } from "pinia";
+import { ref } from "vue";
+import { useNotificationStore } from "./notification";
 
 export const useUserLinksStore = defineStore("userLinkStore", () => {
   // STORE
@@ -9,35 +9,45 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
       id: 0,
       order: 1,
       platform: "GitHub",
-      placeholder: ref("https://www.github.com"),
-      link: ref(""),
+      placeholder: "https://www.github.com",
+      link: "",
     },
     {
       id: 1,
       order: 2,
       platform: "YouTube",
-      placeholder: ref("https://www.youtube.com"),
-      link: ref(""),
+      placeholder: "https://www.youtube.com",
+      link: "",
     },
   ]);
 
   // ACTIONS
+  const addNewLink = () => {
+    userLinks.value.push({
+      id: Math.max(...userLinks.value.map((link) => link.id)) + 1,
+      order: Math.max(...userLinks.value.map((link) => link.order)) + 1,
+      platform: "Twitter",
+      placeholder: "https://twitter.com/",
+      link: "",
+    });
+  };
+
   const removeUserLink = (id) => {
     userLinks.value = userLinks.value.filter((userLink) => userLink.id !== id);
   };
 
-    const selectMenuItem = (item, id) => {
-        userLinks.value[id].platform = item.platform;
-        userLinks.value[id].placeholder = item.placeholder;
-    }
+  const selectMenuItem = (item, id) => {
+    userLinks.value[id].platform = item.platform;
+    userLinks.value[id].placeholder = item.placeholder;
+  };
 
-    const notificationStore = useNotificationStore();
-    const saveNewLink = () => {
-        userLinks.value.forEach(userLink => {
-           userLink.placeholder = userLink.placeholder
-        })
-        notificationStore.turnOnNotification();
-    }
+  const notificationStore = useNotificationStore();
+  const saveNewLink = () => {
+    userLinks.value.forEach((userLink) => {
+      userLink.placeholder = userLink.placeholder;
+    });
+    notificationStore.turnOnNotification();
+  };
 
-  return { userLinks, removeUserLink, selectMenuItem, saveNewLink };
+  return { userLinks, removeUserLink, selectMenuItem, saveNewLink, addNewLink };
 });

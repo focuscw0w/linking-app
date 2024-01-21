@@ -6,8 +6,8 @@
         class="flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 mt-1 text-sm font-semi-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
       >
         <div class="flex gap-2">
-          <img :src="getIconSrc(props.placeholder)" alt="platform icon" />
-          {{ props.placeholder }}
+          <img :src="getIconSrc(props.platform)" alt="platform icon" />
+          {{ props.platform }}
         </div>
         <ChevronDownIcon
           class="-mr-1 h-5 w-5 text-violet-600"
@@ -59,6 +59,6 @@ import { useUserLinksStore } from "../../../store/userLinks.js";
 import { useDropdownStore } from "../../../store/dropdown.js";
 const userLinksStore = useUserLinksStore();
 const dropdownStore = useDropdownStore();
-const props = defineProps(["placeholder", "id"]);
+const props = defineProps(["platform", "id"]);
 const { menuItems, getIconSrc } = dropdownStore;
 </script>

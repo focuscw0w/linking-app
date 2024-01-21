@@ -8,8 +8,7 @@
             @mouseenter="activeHover = true"
             @mouseleave="activeHover = false"
             class="w-40 h-40 object-cover rounded-2xl hover:brightness-50"
-            src="../../../assets/images/avatar.jpg"
-            alt="profile picture"
+            :src="imageSrc"
           />
           <input
             id="fileInput"
@@ -45,6 +44,8 @@
 
 <script setup>
 import { ref } from "vue";
+import { useNotificationStore } from "../../../store/notification";
+const notificationStore = useNotificationStore();
 const activeHover = ref(false);
 
 const checkImageResolution = (file) => {
@@ -77,9 +78,10 @@ const throwWarning = () => {
   console.log("bad");
 };
 
-let imageSrc = null;
+let imageSrc = ref(null);
 const saveAvatar = (file) => {
-  imageSrc = URL.createObjectURL(file);
+  imageSrc.value = URL.createObjectURL(file);
+  notificationStore.turnOnNotification();
 };
 
 const handleFileChange = (event) => {
