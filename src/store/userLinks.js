@@ -46,7 +46,7 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
     userLinks.value.forEach((userLink) => {
       userLink.placeholder = userLink.placeholder;
     });
-    notificationStore.turnOnNotification();
+    notificationStore.turnOnNotification(true);
   };
 
   return { userLinks, removeUserLink, selectMenuItem, saveNewLink, addNewLink };

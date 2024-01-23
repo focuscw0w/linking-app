@@ -25,8 +25,9 @@
               class="w-10 upload-img"
               src="../../../assets/icons/icon-upload-image.svg"
               alt="upload image"
+              style="fill: black;"
             />
-            <p class="text-white font-semibold whitespace-nowrap">
+            <p class="font-semibold whitespace-nowrap" :class="[imageSrc == null ? 'text-black' : 'text-white']">
               Change image
             </p>
           </div>
@@ -45,6 +46,7 @@
 <script setup>
 import { ref } from "vue";
 import { useNotificationStore } from "../../../store/notification";
+import { storeToRefs } from "pinia";
 const notificationStore = useNotificationStore();
 const activeHover = ref(false);
 
@@ -74,25 +76,24 @@ const checkImageResolution = (file) => {
   });
 };
 
-const throwWarning = () => {
-  console.log("bad");
-};
+const { turnOnNotification } = notificationStore;
 
 let imageSrc = ref(null);
-const saveAvatar = (file) => {
+const saveAvatar = (file, res) => {
   imageSrc.value = URL.createObjectURL(file);
-  notificationStore.turnOnNotification();
+  turnOnNotification(true);
+  console.log(res)
 };
 
-const handleFileChange = (event) => {
+const handleFileChange = (event,) => {
   const file = event.target.files[0];
   const resolutionLimit = 1024;
 
   if (file) {
     checkImageResolution(file).then((resolution) => {
       resolution.width && resolution.height <= resolutionLimit
-        ? saveAvatar(file)
-        : throwWarning();
+        ? saveAvatar(file, resolution)
+        : turnOnNotification(false);
     });
   }
 };

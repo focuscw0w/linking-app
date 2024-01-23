@@ -16,14 +16,8 @@
     </div>
   </div>
   <transition name="slide-fade">
-    <Notification v-if="notificationStore.isActive">
-      <template #icon>
-        <NotificationIcon />
-      </template>
-      <template #message-content>
-        <p>Successfully saved!</p>
-        <p class="page-description">Everyone can see your new link.</p>
-      </template>
+    <Notification v-if="notificationStore.isActive" :icon="false" :content="false">
+      <NotificationTemplate />
     </Notification>
   </transition>
 </template>
@@ -32,8 +26,8 @@
 import Navigation from "./components/Navigation/Navigation.vue";
 import Preview from "./components/ToggleDisplay/Preview/Preview.vue";
 import Footer from "./components/ToggleDisplay/Footer.vue";
-import Notification from "./components/Notification.vue";
-import NotificationIcon from "./components/NotificationIcon.vue";
+import Notification from "./components/Notification/Notification.vue";
+import NotificationTemplate from "./components/Notification/NotificationTemplate.vue"
 import { useToggleDisplayStore } from "./store/toggleDisplay.js";
 import { useNotificationStore } from "./store/notification.js";
 
