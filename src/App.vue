@@ -16,9 +16,7 @@
     </div>
   </div>
   <transition name="slide-fade">
-    <Notification v-if="notificationStore.isActive" :icon="false" :content="false">
-      <NotificationTemplate />
-    </Notification>
+    <Notification v-if="notificationStore.isActive" />
   </transition>
 </template>
 
@@ -27,7 +25,6 @@ import Navigation from "./components/Navigation/Navigation.vue";
 import Preview from "./components/ToggleDisplay/Preview/Preview.vue";
 import Footer from "./components/ToggleDisplay/Footer.vue";
 import Notification from "./components/Notification/Notification.vue";
-import NotificationTemplate from "./components/Notification/NotificationTemplate.vue"
 import { useToggleDisplayStore } from "./store/toggleDisplay.js";
 import { useNotificationStore } from "./store/notification.js";
 

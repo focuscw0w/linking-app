@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useNotificationStore } from "./notification";
 
 export const useUserLinksStore = defineStore("userLinkStore", () => {
@@ -20,6 +20,10 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
       link: "",
     },
   ]);
+
+  const MaxTwoItems = computed(() => {
+    return userLinks.value.length <= 2;
+  });
 
   // ACTIONS
   const addNewLink = () => {
@@ -43,11 +47,20 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
 
   const notificationStore = useNotificationStore();
   const saveNewLink = () => {
+    /*
     userLinks.value.forEach((userLink) => {
       userLink.placeholder = userLink.placeholder;
     });
+    */
     notificationStore.turnOnNotification(true);
   };
 
-  return { userLinks, removeUserLink, selectMenuItem, saveNewLink, addNewLink };
+  return {
+    userLinks,
+    MaxTwoItems,
+    removeUserLink,
+    selectMenuItem,
+    saveNewLink,
+    addNewLink,
+  };
 });

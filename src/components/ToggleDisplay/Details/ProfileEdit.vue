@@ -23,6 +23,7 @@
           >
             <img
               class="w-10 upload-img"
+              :class="[imageSrc == null ? 'filter-black' : 'filter-white']"
               src="../../../assets/icons/icon-upload-image.svg"
               alt="upload image"
               style="fill: black;"
@@ -46,7 +47,6 @@
 <script setup>
 import { ref } from "vue";
 import { useNotificationStore } from "../../../store/notification";
-import { storeToRefs } from "pinia";
 const notificationStore = useNotificationStore();
 const activeHover = ref(false);
 
@@ -79,22 +79,27 @@ const checkImageResolution = (file) => {
 const { turnOnNotification } = notificationStore;
 
 let imageSrc = ref(null);
-const saveAvatar = (file, res) => {
+const saveAvatar = (file) => {
   imageSrc.value = URL.createObjectURL(file);
   turnOnNotification(true);
-  console.log(res)
 };
 
-const handleFileChange = (event,) => {
+const handleFileChange = (event) => {
   const file = event.target.files[0];
   const resolutionLimit = 1024;
 
   if (file) {
     checkImageResolution(file).then((resolution) => {
       resolution.width && resolution.height <= resolutionLimit
-        ? saveAvatar(file, resolution)
+        ? saveAvatar(file)
         : turnOnNotification(false);
     });
   }
 };
 </script>
+
+<style scoped>
+.upload-img {
+  filter: #00a4d6 !important;
+}
+</style>

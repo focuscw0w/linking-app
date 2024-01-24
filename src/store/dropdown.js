@@ -29,7 +29,6 @@ export const useDropdownStore = defineStore('dropdownStore', () => {
       ];
 
     // ACTIONS
-
     const getIconSrc = (itemName) => {
         return icons.find((icon) => icon.name === itemName).icon;
       };
