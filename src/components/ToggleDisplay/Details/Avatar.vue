@@ -1,13 +1,13 @@
 <template>
-  <div class="bg-gray-100 p-4 mt-8 flex items-center justify-between">
+  <div class="bg-gray-100 p-4 mt-8 mb-8 flex items-center justify-between">
     <p class="page-description">Profile picture</p>
     <div class="flex items-center gap-6">
-      <div class="relative">
-        <label for="fileInput" class="cursor-pointer">
+      <label for="fileInput" class="cursor-pointer">
+        <div class="w-40 h-40 relative hover:brightness-90 bg-violet-200 rounded-2xl">
           <img
             @mouseenter="activeHover = true"
             @mouseleave="activeHover = false"
-            class="w-40 h-40 object-cover rounded-2xl hover:brightness-50"
+            class="object-cover inline-block rounded-2xl"
             :src="imageSrc"
           />
           <input
@@ -18,22 +18,24 @@
             @change="handleFileChange"
           />
           <div
-            v-if="activeHover"
+            v-if="activeHover || imageSrc == null"
             class="flex flex-col items-center absolute center-background-text"
           >
             <img
               class="w-10 upload-img"
-              :class="[imageSrc == null ? 'filter-black' : 'filter-white']"
+              :class="[imageSrc == null ? '' : 'filter-white']"
               src="../../../assets/icons/icon-upload-image.svg"
               alt="upload image"
-              style="fill: black;"
             />
-            <p class="font-semibold whitespace-nowrap" :class="[imageSrc == null ? 'text-black' : 'text-white']">
+            <p
+              class="font-emphasized whitespace-nowrap"
+              :class="[imageSrc == null ? 'text-violet-700' : 'text-white']"
+            >
               Change image
             </p>
           </div>
-        </label>
-      </div>
+        </div>
+      </label>
       <div class="flex flex-col">
         <p class="page-description break-all">
           Image must be below 1024x1024px.
@@ -97,9 +99,3 @@ const handleFileChange = (event) => {
   }
 };
 </script>
-
-<style scoped>
-.upload-img {
-  filter: #00a4d6 !important;
-}
-</style>

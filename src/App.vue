@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-gray-100 w-screen h-screen">
-    <div class="container mx-auto py-4">
+  <div class="bg-gray-100">
+    <div class="container mx-auto py-4 h-screen">
       <Navigation />
       <div class="flex gap-6">
         <Preview class="basis-1/3" />
         <div class="grow">
           <keep-alive>
-            <component
+            <component style="max-height: 610px"
               :is="displayStore.components[displayStore.currentComponent]"
             />
           </keep-alive>
