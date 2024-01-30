@@ -12,7 +12,7 @@
           stroke-width="1.5"
           stroke-linecap="round"
           stroke-linejoin="round"
-          v-if="notificationStore.success"
+          v-if="success"
           d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
         />
         <g v-else>
@@ -44,16 +44,18 @@ import { ref } from "vue";
 import { useNotificationStore } from "../../store/notification";
 import NotificationContent from "./NotificationTemplate.vue";
 
-const notificationStore = useNotificationStore();
-const iconXmlns = "http://www.w3.org/2000/svg";
-const iconFill = "none";
-const iconClass = "w-6 h-6";
-const iconStroke = notificationStore.success ? "#008000" : "#FF0000";
-const notificationMessage = notificationStore.success
-  ? "Successfully saved!"
-  : "Something went wrong!";
-const notificationDescription = notificationStore.success
-  ? "Everyone can see your new link."
-  : "Resolution is higher than 1024x1024.";
-</script>
+const {
+  success,
+  iconXmlns,
+  iconClass,
+  iconFill,
+  iconStroke,
+} = useNotificationStore();
 
+const notificationMessage = success
+    ? "Successfully saved!"
+    : "Something went wrong!";
+  const notificationDescription = success
+    ? "Everyone can see your new link."
+    : "Resolution is higher than 1024x1024.";
+</script>

@@ -8,9 +8,9 @@
     /></a>
     <div class="flex gap-8">
       <LinksItem
-        v-for="item in displayStore.navigationItems"
+        v-for="item in currentViewStore.navigationItems"
         :key="item.id"
-        @click="displayStore.toggleDisplay(item.name)"
+        @click="currentViewStore.toggleDisplay(item.name)"
         :name="item.name"
       />
     </div>
@@ -19,8 +19,8 @@
 </template>
 
 <script setup>
-import { useToggleDisplayStore } from "../../store/toggleDisplay.js";
+import { useCurrentViewStore } from "../../store/currentView.js";
 import LinksItem from "./NavigationItem.vue";
 
-const displayStore = useToggleDisplayStore();
+const currentViewStore = useCurrentViewStore();
 </script>

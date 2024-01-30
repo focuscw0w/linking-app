@@ -1,11 +1,8 @@
 <template>
-  <form class="w-full bg-gray-100 p-4">
+  <form class="w-full bg-gray-100 p-4" ref="test">
     <div class="md:flex md:items-center mb-6">
       <div class="md:w-1/3">
-        <label
-          class="page-description mb-1 md:mb-0 pr-4"
-          for="inline-first"
-        >
+        <label class="page-description mb-1 md:mb-0 pr-4" for="inline-first">
           First Name
         </label>
       </div>
@@ -14,7 +11,7 @@
           class="w-full rounded-md bg-white p-3 text-sm font-semi-bold placeholder-gray-900 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           id="inline-first"
           type="text"
-          value="Shane"
+          v-model="firstName"
         />
       </div>
     </div>
@@ -32,16 +29,13 @@
           class="w-full rounded-md bg-white p-3 text-sm font-semi-bold placeholder-gray-900 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           id="inline-last"
           type="text"
-          placeholder="Hunt"
+          v-model="lastName"
         />
       </div>
     </div>
     <div class="md:flex md:items-center mb-6">
       <div class="md:w-1/3">
-        <label
-          class="page-description mb-1 md:mb-0 pr-4"
-          for="inline-email"
-        >
+        <label class="page-description mb-1 md:mb-0 pr-4" for="inline-email">
           Email
         </label>
       </div>
@@ -50,9 +44,15 @@
           class="w-full rounded-md bg-white p-3 text-sm font-semi-bold placeholder-gray-900 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           id="inline-email"
           type="text"
-          value="shanehunt@gmail.com"
+          v-model="email"
         />
       </div>
     </div>
   </form>
 </template>
+
+<script setup>
+import { storeToRefs } from 'pinia';
+import { useUserDetailsStore } from '../../../store/userDetails';
+const { firstName, lastName, email } =  storeToRefs(useUserDetailsStore());
+</script>

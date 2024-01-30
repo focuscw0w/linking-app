@@ -6,11 +6,11 @@
 </template>
 
 <script setup>
-import { useToggleDisplayStore } from "../../store/toggleDisplay.js";
+import { useCurrentViewStore } from "../../store/currentView.js";
 import { computed } from "vue";
 
 const props = defineProps(["name"]);
-const displayStore = useToggleDisplayStore();
+const currentViewStore = useCurrentViewStore();
 
 const iconName = computed(() => {
   return props.name === "Links"
@@ -23,7 +23,7 @@ const navigationLinkName = computed(() => {
 });
 
 const className = computed(() => {
-  return displayStore.currentComponent === props.name
+  return currentViewStore.currentComponent === props.name
     ? "font-emphasized bg-violet-200 rounded-md"
     : "";
 });

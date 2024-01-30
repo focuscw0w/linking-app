@@ -7,7 +7,7 @@
         <div class="grow">
           <keep-alive>
             <component style="max-height: 610px"
-              :is="displayStore.components[displayStore.currentComponent]"
+              :is="currentViewStore.components[currentViewStore.currentComponent]"
             />
           </keep-alive>
           <Footer class="self-end" />
@@ -25,9 +25,9 @@ import Navigation from "./components/Navigation/Navigation.vue";
 import Preview from "./components/ToggleDisplay/Preview/Preview.vue";
 import Footer from "./components/ToggleDisplay/Footer.vue";
 import Notification from "./components/Notification/Notification.vue";
-import { useToggleDisplayStore } from "./store/toggleDisplay.js";
+import { useCurrentViewStore } from "./store/currentView.js";
 import { useNotificationStore } from "./store/notification.js";
 
-const displayStore = useToggleDisplayStore();
+const currentViewStore = useCurrentViewStore();
 const notificationStore = useNotificationStore();
 </script>

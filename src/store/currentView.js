@@ -3,7 +3,7 @@ import { ref, shallowRef } from "vue";
 import Links from "../components/ToggleDisplay/Links/Links.vue";
 import Details from "../components/ToggleDisplay/Details/Details.vue";
 
-export const useToggleDisplayStore = defineStore('toggleDisplayStore', () => {
+export const useCurrentViewStore = defineStore('currentViewStore', () => {
     // STORE
     const components = shallowRef({Links, Details});
     const currentComponent = ref("Links");
