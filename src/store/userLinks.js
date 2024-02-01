@@ -10,14 +10,12 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
       order: 1,
       platform: "GitHub",
       placeholder: "https://www.github.com",
-      link: "",
     },
     {
       id: 1,
       order: 2,
       platform: "YouTube",
       placeholder: "https://www.youtube.com",
-      link: "",
     },
   ]);
 
@@ -32,7 +30,6 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
       order: Math.max(...userLinks.value.map((link) => link.order)) + 1,
       platform: "Twitter",
       placeholder: "https://twitter.com/",
-      link: "",
     });
   };
 
@@ -46,14 +43,19 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
   };
 
   const notificationStore = useNotificationStore();
-  const saveNewLink = () => {
+  const saveNewLink = (message) => {
     /*
     userLinks.value.forEach((userLink) => {
       userLink.placeholder = userLink.placeholder;
     });
     */
-    notificationStore.turnOnNotification(true);
+    notificationStore.turnOnNotification(true, message);
   };
+
+  const saveDetails = (message) => {
+    // API
+    notificationStore.turnOnNotification(true, message);
+  }
 
   return {
     userLinks,
@@ -61,6 +63,7 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
     removeUserLink,
     selectMenuItem,
     saveNewLink,
+    saveDetails,
     addNewLink,
   };
 });

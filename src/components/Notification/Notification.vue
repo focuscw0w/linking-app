@@ -32,8 +32,8 @@
     </template>
     <template #message-content>
       <div>
-        <p>{{ notificationMessage }}</p>
-        <p class="page-description">{{ notificationDescription }}</p>
+        <p>{{ content.message }}</p>
+        <p class="page-description">{{ content.description }}</p>
       </div>
     </template>
   </NotificationContent>
@@ -46,6 +46,7 @@ import NotificationContent from "./NotificationTemplate.vue";
 
 const {
   success,
+  content,
   iconXmlns,
   iconClass,
   iconFill,

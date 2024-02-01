@@ -80,10 +80,19 @@ const checkImageResolution = (file) => {
 
 const { turnOnNotification } = notificationStore;
 
+const success = {
+  message: "Successfully saved!",
+  description: "Your avatar has been updated."
+};
+const failure = {
+  message: "Something went wrong!",
+  description: "Resolution is higher than 1024x1024."
+};
+
 let imageSrc = ref(null);
 const saveAvatar = (file) => {
   imageSrc.value = URL.createObjectURL(file);
-  turnOnNotification(true);
+  turnOnNotification(true, success);
 };
 
 const handleFileChange = (event) => {
@@ -94,7 +103,7 @@ const handleFileChange = (event) => {
     checkImageResolution(file).then((resolution) => {
       resolution.width && resolution.height <= resolutionLimit
         ? saveAvatar(file)
-        : turnOnNotification(false);
+        : turnOnNotification(false, failure);
     });
   }
 };

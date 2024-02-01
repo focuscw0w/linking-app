@@ -7,7 +7,6 @@
       @click="handleSubmit()"
     >
       Save
-      {{ firstName }}
     </button>
   </div>
 </template>
@@ -16,28 +15,57 @@
 import { useUserLinksStore } from "../../store/userLinks.js";
 import { useUserDetailsStore } from "../../store/userDetails";
 import { useCurrentViewStore } from "../../store/currentView";
+import { useNotificationStore } from "../../store/notification";
 import { storeToRefs } from "pinia";
+
 const userLinksStore = useUserLinksStore();
 const currentViewStore = useCurrentViewStore();
 const { firstName, lastName, email } = storeToRefs(useUserDetailsStore());
+const { turnOnNotification } = useNotificationStore();
 
-const validate = (firstName = null, lastName = null, email) => {
+const successDetails = {
+  message: "Successfully saved!",
+  description: "Your profile has been updated.",
+};
+const failureDetails = {
+  message: "Failure!",
+  description: "Your email or name is not valid.",
+};
+const successLinks = {
+  message: "Successfully saved!",
+  description: "Everyone can see your new link.",
+};
+const failureLinks = {
+  message: "Something went wrong!",
+  description: "Url is not valid.",
+};
+
+const validateDetails = () => {
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (firstName.value === "" || lastName.value === "" || email.value === "") return false;
-  if (!regex.test(email.value)) return false;
+  return (
+    firstName.value !== "" && lastName.value !== "" && regex.test(email.value)
+  );
+};
 
-  return true;
+const validateLinks = (urls) => {
+  const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  return urls.every((url) => regex.test(url));
 };
 
 const submitLinks = () => {
-  console.log("links");
-  userLinksStore.saveNewLink();
+  const store = storeToRefs(userLinksStore);
+  const userUrls = store.userLinks.value.map(
+    (link) => link.placeholder
+  );
+  validateLinks(userUrls)
+    ? userLinksStore.saveNewLink(successLinks)
+    : turnOnNotification(false, failureLinks);
 };
 
 const submitDetails = () => {
-  validate(firstName, lastName, email) === true
-    ? userLinksStore.saveNewLink()
-    : console.log("bad");
+  validateDetails()
+    ? turnOnNotification(true, successDetails)
+    : turnOnNotification(false, failureDetails);
 };
 
 const handleSubmit = () => {
