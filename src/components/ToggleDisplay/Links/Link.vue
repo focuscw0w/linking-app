@@ -33,6 +33,7 @@ import DropDown from "./DropDown.vue";
 
 const props = defineProps(["id"]);
 const userLinksStore = useUserLinksStore();
+
 const linkItem = computed(() => {
   return userLinksStore.userLinks.find((link) => link.id === props.id);
 });

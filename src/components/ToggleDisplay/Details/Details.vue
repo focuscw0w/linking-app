@@ -16,6 +16,6 @@
 </template>
 
 <script setup>
-import Form from "./UserDetails.vue";
+import Form from "./UserForm.vue";
 import Avatar from "./Avatar.vue";
 </script>

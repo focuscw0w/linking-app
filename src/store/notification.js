@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 export const useNotificationStore = defineStore("notificationStore", () => {
   // STORE
@@ -7,22 +7,27 @@ export const useNotificationStore = defineStore("notificationStore", () => {
   const success = ref(true);
   const content = ref({});
 
-  const iconXmlns = "http://www.w3.org/2000/svg";
-  const iconFill = "none";
-  const iconClass = "w-6 h-6";
-  const iconStroke = success ? "#008000" : "#FF0000";
-  const notificationMessage = success
-    ? "Successfully saved!"
-    : "Something went wrong!";
-  const notificationDescription = success
-    ? "Everyone can see your new link."
-    : "Resolution is higher than 1024x1024.";
+  const iconConfig = computed(() => ({
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    class: "w-6 h-6",
+    stroke: success.value ? "#008000" : "#FF0000",
+  }));
+
+  const notificationMessage = computed(() =>
+    success.value ? "Successfully saved!" : "Something went wrong!"
+  );
+
+  const notificationDescription = computed(() =>
+    success.value
+      ? "Everyone can see your new link."
+      : "Resolution is higher than 1024x1024."
+  );
 
   // ACTIONS
   const turnOnNotification = (bool, message) => {
     isActive.value = true;
-    success.value = bool
-    console.log(content)
+    success.value = bool;
     content.value = message;
     setTimeout(() => (isActive.value = false), 2500);
   };
@@ -32,10 +37,7 @@ export const useNotificationStore = defineStore("notificationStore", () => {
     success,
     content,
     turnOnNotification,
-    iconXmlns,
-    iconFill,
-    iconClass,
-    iconStroke,
+    iconConfig,
     notificationMessage,
     notificationDescription,
   };

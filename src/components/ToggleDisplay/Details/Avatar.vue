@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-gray-100 p-4 mt-8 mb-8 flex items-center justify-between">
+  <div class="sm:flex-row flex-col bg-gray-100 gap-2 sm:gap-0 p-4 mt-8 mb-8 flex items-center justify-between">
     <p class="page-description">Profile picture</p>
-    <div class="flex items-center gap-6">
+    <div class="sm:flex-row flex-col flex items-center gap-6">
       <label for="fileInput" class="cursor-pointer">
         <div class="w-40 h-40 relative hover:brightness-90 bg-violet-200 rounded-2xl">
           <img

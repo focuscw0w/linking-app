@@ -57,8 +57,10 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid/index.js";
 import { useUserLinksStore } from "../../../store/userLinks.js";
 import { useDropdownStore } from "../../../store/dropdown.js";
+
 const userLinksStore = useUserLinksStore();
 const dropdownStore = useDropdownStore();
+
 const props = defineProps(["platform", "id"]);
 const { menuItems, getIconSrc } = dropdownStore;
 </script>

@@ -2,13 +2,13 @@
   <NotificationContent>
     <template #icon>
       <svg
-        :xmlns="iconXmlns"
-        :fill="iconFill"
+        :xmlns="iconConfig.xmlns"
+        :fill="iconConfig.fill"
         viewBox="0 0 24 24"
-        :class="iconClass"
+        :class="iconConfig.class"
       >
         <path
-          :stroke="iconStroke"
+          :stroke="iconConfig.stroke"
           stroke-width="1.5"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -32,31 +32,24 @@
     </template>
     <template #message-content>
       <div>
-        <p>{{ content.message }}</p>
-        <p class="page-description">{{ content.description }}</p>
+        <p>{{ notificationMessage }}</p>
+        <p class="page-description">{{ notificationDescription }}</p>
       </div>
     </template>
   </NotificationContent>
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useNotificationStore } from "../../store/notification";
 import NotificationContent from "./NotificationTemplate.vue";
+
+const notificationStore = useNotificationStore();
 
 const {
   success,
   content,
-  iconXmlns,
-  iconClass,
-  iconFill,
-  iconStroke,
-} = useNotificationStore();
-
-const notificationMessage = success
-    ? "Successfully saved!"
-    : "Something went wrong!";
-  const notificationDescription = success
-    ? "Everyone can see your new link."
-    : "Resolution is higher than 1024x1024.";
+  iconConfig,
+  notificationMessage,
+  notificationDescription,
+} = notificationStore;
 </script>

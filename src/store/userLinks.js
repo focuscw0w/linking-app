@@ -38,8 +38,9 @@ export const useUserLinksStore = defineStore("userLinkStore", () => {
   };
 
   const selectMenuItem = (item, id) => {
-    userLinks.value[id].platform = item.platform;
-    userLinks.value[id].placeholder = item.placeholder;
+    const matchedUserLink = userLinks.value.find(userLink => userLink.id === id);
+    matchedUserLink.platform = item.platform;
+    matchedUserLink.placeholder = item.placeholder;
   };
 
   const notificationStore = useNotificationStore();

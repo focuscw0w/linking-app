@@ -1,7 +1,7 @@
 <template>
   <a class="active-link-default" :class="className">
     <img :src="`/src/assets/icons/${iconName}`" alt="Link icon" />
-    {{ navigationLinkName }}
+    <p class="hidden sm:block">{{ navigationLinkName }}</p>
   </a>
 </template>
 
